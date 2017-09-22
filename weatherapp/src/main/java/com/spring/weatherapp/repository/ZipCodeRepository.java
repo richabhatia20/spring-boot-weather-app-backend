@@ -6,12 +6,13 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
+import java.util.Collection;
 
 @Repository
 public interface ZipCodeRepository extends JpaRepository<ZipCode, Long> {
 
 
-    Optional<ZipCode> findByCod(String cod);
+    Collection<ZipCode> findByCod(String cod);
 
 
 
