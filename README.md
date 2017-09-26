@@ -11,5 +11,6 @@ This repo contains Spring Boot backend code for weather-react-app
 # Dev Environment
 * Intelli J
 * Tomcat 8.5
+* Gradle
 * Sprint Boot 1.5.7
 * Java 1.8
