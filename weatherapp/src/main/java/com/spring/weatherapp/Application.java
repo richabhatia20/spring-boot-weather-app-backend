@@ -33,7 +33,8 @@ public class Application {
                     cityRepository.save(new City(a, "US", "10000", zipCode));
                     cityRepository.save(new City(a, "US","20000", zipCode2));
 
-
+                    System.out.println("printing from first zipcode: " + zipCode.getCod());
+                    System.out.println("printing from second zipcode: " +zipCode2.getMessage());
 
                 }
 
