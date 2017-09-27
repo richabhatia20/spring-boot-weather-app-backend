@@ -14,7 +14,7 @@ import com.spring.weatherapp.exception.ZipCodeNotFoundException;
 import java.util.Collection;
 
 @RestController
-@RequestMapping("weatherres/{cod}")
+@RequestMapping("/")
 public class ZipCodeRestController {
 
     private final ZipCodeRepository zipCodeRepository;
@@ -27,18 +27,26 @@ public class ZipCodeRestController {
         this.zipCodeRepository = zipCodeRepository;
     }
 
-    @RequestMapping(method= RequestMethod.GET)
+    @RequestMapping(method= RequestMethod.GET, value ="/{cod}")
     Collection<ZipCode> getAllZipCodes(@PathVariable String cod){
-
+        System.out.print("hii2");
         this.validateZip(cod);
         return this.zipCodeRepository.findByCod(cod);
     }
 
+    @RequestMapping(method = RequestMethod.GET, value ="/test")
+    String testMethod(){
+        System.out.print("hii");
+        return "HelloWorld";
+    }
 
     private void validateZip(String cod)
     {
 
        // this.zipCodeRepository.findByCod(cod).orElseThrow(() -> new ZipCodeNotFoundException(cod));
+        System.out.print(zipCodeRepository.findByCod(cod));
+
+
         if(this.zipCodeRepository.findByCod(cod).size()>1)
         {
 
