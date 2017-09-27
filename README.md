@@ -23,4 +23,3 @@ This repo contains Spring Boot backend code for weather-react-app
 * https://www.programcreek.com/java-api-examples/index.php?class=java.util.Optional&method=orElseThrow
 * https://www.jetbrains.com/help/idea/developing-a-java-ee-application.html
 * https://stackoverflow.com/questions/25373565/intellij-idea-ide-using-port-1099
-* 
