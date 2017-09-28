@@ -1,5 +1,7 @@
 package com.spring.weatherapp.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -8,6 +10,7 @@ public class City {
 
     @OneToOne
     @PrimaryKeyJoinColumn
+    @JsonIgnore
     private ZipCode zipCode;
 
     @Id

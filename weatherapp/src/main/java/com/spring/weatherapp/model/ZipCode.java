@@ -1,6 +1,6 @@
 package com.spring.weatherapp.model;
 
-//import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -27,6 +27,7 @@ public class ZipCode {
         return id;
     }
 
+    @JsonIgnore
     private String cod;
     private String message;
     private String cnt;

@@ -10,6 +10,7 @@ public class Coord {
 
     @OneToOne
     @PrimaryKeyJoinColumn
+    @JsonIgnore
     private City cityValue;
 
     @Id
