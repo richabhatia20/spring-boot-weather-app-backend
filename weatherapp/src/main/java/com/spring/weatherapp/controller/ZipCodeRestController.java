@@ -10,11 +10,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import com.spring.weatherapp.exception.ZipCodeNotFoundException;
-
+import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.Collection;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.http.HttpStatus;
+
 
 @RestController
-@RequestMapping("/")
+@RequestMapping("/restcontroller")
 public class ZipCodeRestController {
 
     private final ZipCodeRepository zipCodeRepository;
@@ -29,15 +33,20 @@ public class ZipCodeRestController {
 
     @RequestMapping(method= RequestMethod.GET, value ="/{cod}")
     Collection<ZipCode> getAllZipCodes(@PathVariable String cod){
-        System.out.print("hii2");
+        System.out.println("hii2");
         this.validateZip(cod);
         return this.zipCodeRepository.findByCod(cod);
     }
 
-    @RequestMapping(method = RequestMethod.GET, value ="/test")
-    String testMethod(){
-        System.out.print("hii");
-        return "HelloWorld";
+    @RequestMapping(method = RequestMethod.GET, value ="/test",produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public ResponseEntity<String> testMethod(){
+        System.out.println("hii");
+       // String location ="Boston";
+        //return new ResponseEntity<User>(u,HttpStatus.OK);
+       // return ResponseEntity.created(location).build();
+        //return ResponseEntity.noContent().build();
+        return new ResponseEntity<String>("HelloWorld!",HttpStatus.OK);
     }
 
     private void validateZip(String cod)
@@ -50,7 +59,8 @@ public class ZipCodeRestController {
         if(this.zipCodeRepository.findByCod(cod).size()>1)
         {
 
-            System.out.println("found");
+            System.out.println("found cod");
+            System.out.println("size of list:" + this.zipCodeRepository.findByCod(cod).size());
         }
         else{
             System.out.println("not found");
