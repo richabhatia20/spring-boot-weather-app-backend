@@ -49,6 +49,17 @@ public class ZipCodeRestController {
         return new ResponseEntity<String>("HelloWorld!",HttpStatus.OK);
     }
 
+    @RequestMapping(method = RequestMethod.GET, value ="/login",produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public ResponseEntity<String> login(){
+        System.out.println("log in");
+        // String location ="Boston";
+        //return new ResponseEntity<User>(u,HttpStatus.OK);
+        // return ResponseEntity.created(location).build();
+        //return ResponseEntity.noContent().build();
+        return new ResponseEntity<String>("{status: '1', message: 'Login Success!'}",HttpStatus.OK);
+    }
+
     private void validateZip(String cod)
     {
 
