@@ -8,7 +8,9 @@ public class ZipCodeNotFoundException  extends  RuntimeException{
 
     public ZipCodeNotFoundException(String cod){
 
+
         super("Could not find zipcode " + cod);
+        System.out.println("Could not find the requested zipcode");
     }
 
 

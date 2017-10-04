@@ -34,7 +34,15 @@ public class ZipCodeRestController {
     @RequestMapping(method= RequestMethod.GET, value ="/{cod}")
     Collection<ZipCode> getAllZipCodes(@PathVariable String cod){
         System.out.println("hii2");
-        this.validateZip(cod);
+        int res =this.validateZip(cod);
+
+            if(res ==0)
+            {
+
+                System.out.println("res is 0");
+            }
+
+
         return this.zipCodeRepository.findByCod(cod);
     }
 
@@ -60,7 +68,7 @@ public class ZipCodeRestController {
         return new ResponseEntity<String>("{status: '1', message: 'Login Success!'}",HttpStatus.OK);
     }
 
-    private void validateZip(String cod)
+    private int validateZip(String cod)
     {
 
        // this.zipCodeRepository.findByCod(cod).orElseThrow(() -> new ZipCodeNotFoundException(cod));
@@ -72,10 +80,12 @@ public class ZipCodeRestController {
 
             System.out.println("found cod");
             System.out.println("size of list:" + this.zipCodeRepository.findByCod(cod).size());
+            return 1;
         }
         else{
             System.out.println("not found");
             new ZipCodeNotFoundException(cod);
+            return 0;
         }
     }
 
